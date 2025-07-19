@@ -1,0 +1,7 @@
+<decoder name="fortigate-firewall">
+  <parent>syslog</parent>
+  <prematch>^date=\d{4}-\d{2}-\d{2} time=\d{2}:\d{2}:\d{2} devname="</prematch>
+  <regex offset="0">
+    ^date=%{year}-%{month}-%{day} time=%{hour}:%{min}:%{sec} devname="%{device_name}" devid="%{device_id}" eventtime=%{number:event_time} tz="%{timezone}" logid=%{number:log_id} type="%{type}" subtype="%{subtype}" level="%{log_level}" vd="%{virtual_domain}" srcip=%{ip:src_ip} srcport=%{number:src_port} srcintf="%{src_interface}" srcintfrole="%{src_interface_role}" dstip=%{ip:dst_ip} dstport=%{number:dst_port} dstintf="%{dst_interface}" dstintfrole="%{dst_interface_role}" srccountry="%{src_country}" dstcountry="%{dst_country}" sessionid=%{number:session_id} proto=%{number:protocol} action="%{action}" policyid=%{number:policy_id} policytype="%{policy_type}" poluuid="%{policy_uuid}" policymame="%{policy_name}" service="%{service}" trandisp="%{transaction}" appcat="%{app_category}" duration=%{number:duration} sentbyte=%{number:sent_bytes} rcvdbyte=%{number:received_bytes} sentpkt=%{number:sent_packets} rcvdpkt=%{number:received_packets} schvendor="%{src_hardware_vendor}" devtype="%{device_type}" osname="%{os_name}" mastersrcmac="%{mac:master_src_mac}" srcmac="%{mac:src_mac}" srcserver=%{number:src_server} dsthvendor="%{dst_hardware_vendor}" dstdevtype="%{dst_device_type}" dstosname="%{dst_os_name}" masterdstmac="%{mac:master_dst_mac}" dstmac="%{mac:dst_mac}" dstserver=%{number:dst_server}
+  </regex>
+</decoder>
