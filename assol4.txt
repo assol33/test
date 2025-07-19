@@ -1,0 +1,18 @@
+<decoder name="fortigate">
+    <prematch>^date=\d{4}-\d{2}-\d{2} time=\d{2}:\d{2}:\d{2} devname="</prematch>
+</decoder>
+
+<decoder name="fortigate-fields">
+    <parent>fortigate</parent>
+    <regex type="pcre2">
+        ^date=(\d{4}-\d{2}-\d{2}) time=(\d{2}:\d{2}:\d{2}) devname="([^"]+)" devid="([^"]+)" eventtime=(\d+) tz="([^"]+)" logid=(\d+) type="([^"]+)" subtype="([^"]+)" level="([^"]+)" vd="([^"]+)" srcip=(\d+\.\d+\.\d+\.\d+) srcport=(\d+) srcintf="([^"]+)" srcintfrole="([^"]+)" dstip=(\d+\.\d+\.\d+\.\d+) dstport=(\d+) dstintf="([^"]+)" dstintfrole="([^"]+)" srccountry="([^"]+)" dstcountry="([^"]+)" sessionid=(\d+) proto=(\d+) action="([^"]+)" policyid=(\d+) policytype="([^"]+)" poluuid="([^"]+)" policymame="([^"]+)" service="([^"]+)" trandisp="([^"]+)" appcat="([^"]+)" duration=(\d*) sentbyte=(\d+) rcvdbyte=(\d+) sentpkt=(\d+) rcvdpkt=(\d+) schvendor="([^"]+)" devtype="([^"]+)" osname="([^"]+)" mastersrcmac="([^"]+)" srcmac="([^"]+)" srcserver=(\d+) dsthvendor="([^"]+)" dstdevtype="([^"]+)" dstosname="([^"]+)" masterdstmac="([^"]+)" dstmac="([^"]+)" dstserver=(\d+)
+    </regex>
+    <order>
+        date,time,device_name,device_id,event_time,timezone,log_id,type,subtype,log_level,virtual_domain,
+        src_ip,src_port,src_interface,src_interface_role,dst_ip,dst_port,dst_interface,dst_interface_role,
+        src_country,dst_country,session_id,protocol,action,policy_id,policy_type,policy_uuid,policy_name,
+        service,transaction,app_category,duration,sent_bytes,received_bytes,sent_packets,received_packets,
+        src_hardware_vendor,device_type,os_name,master_src_mac,src_mac,src_server,dst_hardware_vendor,
+        dst_device_type,dst_os_name,master_dst_mac,dst_mac,dst_server
+    </order>
+</decoder>
