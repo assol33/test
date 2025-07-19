@@ -1,0 +1,19 @@
+<group name="fortigate,">
+  <rule id="100001" level="5">
+    <decoded_as>json</decoded_as>
+    <field name="subtype">forward</field>
+    <description>FortiGate forward traffic log</description>
+  </rule>
+
+  <rule id="100002" level="10">
+    <if_sid>100001</if_sid>
+    <field name="action">deny</field>
+    <description>FortiGate denied connection</description>
+  </rule>
+
+  <rule id="100003" level="3">
+    <if_sid>100001</if_sid>
+    <field name="action">accept</field>
+    <description>FortiGate accepted connection</description>
+  </rule>
+</group>
